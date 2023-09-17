@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Languages</title>
+    <style>
+        section{
+            background-color: rgb(194, 18, 18);
+            width: 50%;
+            text-align: center;
+            margin: auto;
+            color: #ffff;
+        }
+        .btns{
+            background-color: rgb(125, 125, 151);
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+        }
+        .btns button{
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .btns .active{
+            background-color: rgb(245, 140, 80);
+            color: #ffff;
+        }
+        .content{
+            padding: 20px;
+            font-size: 1.5rem;
+        }
+        .content div{
+            display: none;
+        }
+        .show{
+            display: block !important;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="btns">
+            <button data-mark="html" class="active"> HTML </button>
+            <button data-mark="css"> CSS </button>
+            <button data-mark="js"> JS </button>
+        </div>
+        <div class="content">
+            <div id="html" class="show">hyper text markup language to describe data in the page</div>
+            <div id="css">cascading style sheets for style html</div>
+            <div id="js">programing language to the behavior of the design</div>
+        </div>
+    </section>
+
+    <script>
+        let btnsDiv=document.querySelector(".btns");
+        let btns=document.querySelectorAll(".btns button");
+        let divs=document.querySelectorAll(".content div");
+
+        btnsDiv.addEventListener('click',e=>{
+            let currentBtn=e.target;
+            let currentDiv=document.getElementById(currentBtn.dataset.mark);
+            btns.forEach(btn=>{
+                btn.classList.remove("active");
+                currentBtn.classList.add("active");
+            })
+            divs.forEach(div=>{
+                div.classList.remove("show");
+                currentDiv.classList.add("show");
+            })
+        })  
+         
+    </script>
+</body>
+</html>
